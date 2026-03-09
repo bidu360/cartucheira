@@ -31,10 +31,15 @@ border-radius:6px;
 background:#ff3b3b;
 color:white;
 font-weight:bold;
+transition:0.2s;
 }
 
 button:hover{
 background:#ff0000;
+}
+
+.playing{
+background:#00cc44 !important;
 }
 
 </style>
@@ -47,51 +52,59 @@ background:#ff0000;
 
 <div class="container">
 
-<button onclick="play('a1')">Som 1</button>
-<button onclick="play('a2')">Som 2</button>
-<button onclick="play('a3')">Som 3</button>
-<button onclick="play('a4')">Som 4</button>
-<button onclick="play('a5')">Som 5</button>
+<button onclick="play(this,'a1')">Som 1</button>
+<button onclick="play(this,'a2')">Som 2</button>
+<button onclick="play(this,'a3')">Som 3</button>
+<button onclick="play(this,'a4')">Som 4</button>
+<button onclick="play(this,'a5')">Som 5</button>
 
-<button onclick="play('a6')">Som 6</button>
-<button onclick="play('a7')">Som 7</button>
-<button onclick="play('a8')">Som 8</button>
-<button onclick="play('a9')">Som 9</button>
-<button onclick="play('a10')">Som 10</button>
+<button onclick="play(this,'a6')">Som 6</button>
+<button onclick="play(this,'a7')">Som 7</button>
+<button onclick="play(this,'a8')">Som 8</button>
+<button onclick="play(this,'a9')">Som 9</button>
+<button onclick="play(this,'a10')">Som 10</button>
 
-<button onclick="play('a11')">Som 11</button>
-<button onclick="play('a12')">Som 12</button>
-<button onclick="play('a13')">Som 13</button>
-<button onclick="play('a14')">Som 14</button>
-<button onclick="play('a15')">Som 15</button>
+<button onclick="play(this,'a11')">Som 11</button>
+<button onclick="play(this,'a12')">Som 12</button>
+<button onclick="play(this,'a13')">Som 13</button>
+<button onclick="play(this,'a14')">Som 14</button>
+<button onclick="play(this,'a15')">Som 15</button>
 
-<button onclick="play('a16')">Som 16</button>
-<button onclick="play('a17')">Som 17</button>
-<button onclick="play('a18')">Som 18</button>
-<button onclick="play('a19')">Som 19</button>
-<button onclick="play('a20')">Som 20</button>
+<button onclick="play(this,'a16')">Som 16</button>
+<button onclick="play(this,'a17')">Som 17</button>
+<button onclick="play(this,'a18')">Som 18</button>
+<button onclick="play(this,'a19')">Som 19</button>
+<button onclick="play(this,'a20')">Som 20</button>
 
-<button onclick="play('a21')">Som 21</button>
-<button onclick="play('a22')">Som 22</button>
-<button onclick="play('a23')">Som 23</button>
-<button onclick="play('a24')">Som 24</button>
-<button onclick="play('a25')">Som 25</button>
+<button onclick="play(this,'a21')">Som 21</button>
+<button onclick="play(this,'a22')">Som 22</button>
+<button onclick="play(this,'a23')">Som 23</button>
+<button onclick="play(this,'a24')">Som 24</button>
+<button onclick="play(this,'a25')">Som 25</button>
 
-<button onclick="play('a26')">Som 26</button>
-<button onclick="play('a27')">Som 27</button>
-<button onclick="play('a28')">Som 28</button>
-<button onclick="play('a29')">Som 29</button>
-<button onclick="play('a30')">Som 30</button>
+<button onclick="play(this,'a26')">Som 26</button>
+<button onclick="play(this,'a27')">Som 27</button>
+<button onclick="play(this,'a28')">Som 28</button>
+<button onclick="play(this,'a29')">Som 29</button>
+<button onclick="play(this,'a30')">Som 30</button>
 
 </div>
 
 <script>
 
-function play(id){
+function play(btn,id){
 
 var audio = new Audio("audios/"+id+".mp3");
 
+btn.classList.add("playing");
+
 audio.play();
+
+audio.onended = function(){
+
+btn.classList.remove("playing");
+
+}
 
 }
 
