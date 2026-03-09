@@ -5,6 +5,7 @@
 <title>Cartucheira</title>
 
 <style>
+
 body{
 font-family:Arial;
 background:#111;
@@ -12,13 +13,27 @@ color:white;
 text-align:center;
 }
 
+.container{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+width:80%;
+margin:auto;
+}
+
 button{
-width:200px;
+width:100%;
 height:80px;
-margin:10px;
 font-size:18px;
 cursor:pointer;
+border:none;
+border-radius:6px;
 }
+
+button:hover{
+background:#ccc;
+}
+
 </style>
 
 </head>
@@ -27,34 +42,56 @@ cursor:pointer;
 
 <h2>Cartucheira</h2>
 
+<div class="container">
+
 <button onclick="play('a1')">Som 1</button>
 <button onclick="play('a2')">Som 2</button>
 <button onclick="play('a3')">Som 3</button>
 <button onclick="play('a4')">Som 4</button>
 <button onclick="play('a5')">Som 5</button>
+
 <button onclick="play('a6')">Som 6</button>
 <button onclick="play('a7')">Som 7</button>
 <button onclick="play('a8')">Som 8</button>
 <button onclick="play('a9')">Som 9</button>
 <button onclick="play('a10')">Som 10</button>
 
-<audio id="a1" src="audio1.mp3"></audio>
-<audio id="a2" src="audio2.mp3"></audio>
-<audio id="a3" src="audio3.mp3"></audio>
-<audio id="a4" src="audio4.mp3"></audio>
-<audio id="a5" src="audio5.mp3"></audio>
-<audio id="a6" src="audio6.mp3"></audio>
-<audio id="a7" src="audio7.mp3"></audio>
-<audio id="a8" src="audio8.mp3"></audio>
-<audio id="a9" src="audio9.mp3"></audio>
-<audio id="a10" src="audio10.mp3"></audio>
+<button onclick="play('a11')">Som 11</button>
+<button onclick="play('a12')">Som 12</button>
+<button onclick="play('a13')">Som 13</button>
+<button onclick="play('a14')">Som 14</button>
+<button onclick="play('a15')">Som 15</button>
+
+<button onclick="play('a16')">Som 16</button>
+<button onclick="play('a17')">Som 17</button>
+<button onclick="play('a18')">Som 18</button>
+<button onclick="play('a19')">Som 19</button>
+<button onclick="play('a20')">Som 20</button>
+
+<button onclick="play('a21')">Som 21</button>
+<button onclick="play('a22')">Som 22</button>
+<button onclick="play('a23')">Som 23</button>
+<button onclick="play('a24')">Som 24</button>
+<button onclick="play('a25')">Som 25</button>
+
+<button onclick="play('a26')">Som 26</button>
+<button onclick="play('a27')">Som 27</button>
+<button onclick="play('a28')">Som 28</button>
+<button onclick="play('a29')">Som 29</button>
+<button onclick="play('a30')">Som 30</button>
+
+</div>
 
 <script>
+
 function play(id){
-var audio = document.getElementById(id);
-audio.currentTime = 0;
+
+var audio=new Audio("audios/"+id+".mp3");
+
 audio.play();
+
 }
+
 </script>
 
 </body>
