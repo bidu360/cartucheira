@@ -105,9 +105,38 @@ color:black;
 
 <script>
 
+/* CARREGA TODOS OS ÁUDIOS NA MEMÓRIA */
+
+var audios = {}
+
+window.onload = function(){
+
+var lista = [
+"a1","a2","a3","a4","a5",
+"a6","a7","a8","a9","a10",
+"a11","a12","a13","a14","a15",
+"a16","a17","a18","a19","a20",
+"a21","a22","a23","a24","a25",
+"risada1","risada2","risada3",
+"a29","a30"
+]
+
+lista.forEach(function(id){
+
+audios[id] = new Audio(id + ".mp3")
+
+})
+
+}
+
+
+/* FUNÇÃO DE TOCAR */
+
 function play(btn,id){
 
-var audio = new Audio(id + ".mp3")
+var audio = audios[id]
+
+audio.currentTime = 0
 
 btn.classList.add("playing")
 
