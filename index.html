@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Cartucheira</title>
@@ -13,33 +14,36 @@ color:white;
 text-align:center;
 }
 
+h1{
+margin-top:30px;
+}
+
 .container{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:10px;
 width:80%;
 margin:auto;
+margin-top:40px;
 }
 
 button{
-width:100%;
 height:80px;
 font-size:18px;
 cursor:pointer;
 border:none;
 border-radius:6px;
-background:#ff3b3b;
+background:#444;
 color:white;
-font-weight:bold;
 transition:0.2s;
 }
 
 button:hover{
-background:#ff0000;
+background:#666;
 }
 
 .playing{
-background:#00cc44 !important;
+background:#00c853 !important;
 }
 
 </style>
@@ -48,7 +52,7 @@ background:#00cc44 !important;
 
 <body>
 
-<h2>Cartucheira</h2>
+<h1>Cartucheira</h1>
 
 <div class="container">
 
@@ -94,15 +98,15 @@ background:#00cc44 !important;
 
 function play(btn,id){
 
-var audio = new Audio(id + ".mp3");
+var audio = new Audio(id + ".mp3")
 
-btn.classList.add("playing");
+btn.classList.add("playing")
 
-audio.play();
+audio.play()
 
 audio.onended = function(){
 
-btn.classList.remove("playing");
+btn.classList.remove("playing")
 
 }
 
