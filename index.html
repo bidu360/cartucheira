@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <meta charset="UTF-8">
-<title>Cartucheira Moza</title>
+<title>Cartucheira</title>
 
 <style>
 
 body{
-background:#111;
+background:#0a0a0a;
 font-family:Arial;
 text-align:center;
-color:white;
 }
 
-.container{
+.grid{
 display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-width:80%;
-margin:auto;
-margin-top:40px;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+padding:40px;
 }
 
 button{
-height:80px;
-font-size:18px;
+padding:40px;
+font-size:22px;
+border-radius:10px;
 border:none;
-border-radius:6px;
-background:#444;
-color:white;
 cursor:pointer;
+}
+
+.amarelo{
+background:#ffd400;
+}
+
+.azul{
+background:#6fb1ce;
+}
+
+.laranja{
+background:#ff9800;
+}
+
+.cinza{
+background:#555;
+color:white;
 }
 
 .playing{
 background:#00c853 !important;
-}
-
-/* CORES */
-
-.laranja{
-background:#ff9800;
-color:black;
-}
-
-.azul{
-background:#81d4fa;
-color:black;
-}
-
-.amarelo{
-background:#ffd600;
-color:black;
+color:white;
 }
 
 </style>
@@ -61,65 +56,49 @@ color:black;
 
 <body>
 
-<h1>Cartucheira Moza</h1>
-
-<div class="container">
+<div class="grid">
 
 <button class="laranja" onclick="play(this,'a1')">Som 1</button>
 <button class="laranja" onclick="play(this,'a2')">Som 2</button>
 <button class="laranja" onclick="play(this,'a3')">Som 3</button>
-<button class="laranja" onclick="play(this,'a4')">Som 4</button>
-<button class="laranja" onclick="play(this,'a5')">Som 5</button>
 
-<button onclick="play(this,'a6')">Som 6</button>
-<button onclick="play(this,'a7')">Som 7</button>
-<button onclick="play(this,'a8')">Som 8</button>
-<button onclick="play(this,'a9')">Som 9</button>
-<button onclick="play(this,'a10')">Som 10</button>
+<button class="cinza" onclick="play(this,'a6')">Som 6</button>
+<button class="cinza" onclick="play(this,'a7')">Som 7</button>
+<button class="cinza" onclick="play(this,'a8')">Som 8</button>
 
 <button class="azul" onclick="play(this,'a11')">Som 11</button>
 <button class="azul" onclick="play(this,'a12')">Som 12</button>
 <button class="azul" onclick="play(this,'a13')">Som 13</button>
-<button class="azul" onclick="play(this,'a14')">Som 14</button>
-<button class="azul" onclick="play(this,'a15')">Som 15</button>
 
-<button onclick="play(this,'a16')">Som 16</button>
-<button onclick="play(this,'a17')">Som 17</button>
-<button onclick="play(this,'a18')">Som 18</button>
-<button onclick="play(this,'a19')">Som 19</button>
-<button onclick="play(this,'a20')">Som 20</button>
+<button class="cinza" onclick="play(this,'a16')">Som 16</button>
+<button class="cinza" onclick="play(this,'a17')">Som 17</button>
+<button class="cinza" onclick="play(this,'a18')">Som 18</button>
 
 <button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO</button>
-
 <button class="amarelo" onclick="play(this,'a22')">Som 22</button>
 <button class="amarelo" onclick="play(this,'a23')">Som 23</button>
-<button class="amarelo" onclick="play(this,'a24')">Som 24</button>
-<button class="amarelo" onclick="play(this,'a25')">Som 25</button>
 
-<button onclick="play(this,'risada1')">RISADA1</button>
-<button onclick="play(this,'risada2')">RISADA2</button>
-<button onclick="play(this,'risada3')">RISADA3</button>
-<button onclick="play(this,'a29')">Som 29</button>
-<button onclick="play(this,'a30')">Som 30</button>
+<button class="cinza" onclick="play(this,'risada1')">RISADA1</button>
+<button class="cinza" onclick="play(this,'risada2')">RISADA2</button>
+<button class="cinza" onclick="play(this,'risada3')">RISADA3</button>
 
 </div>
 
 <script>
-
-/* CARREGA TODOS OS ÁUDIOS NA MEMÓRIA */
 
 var audios = {}
 
 window.onload = function(){
 
 var lista = [
-"a1","a2","a3","a4","a5",
-"a6","a7","a8","a9","a10",
-"a11","a12","a13","a14","a15",
-"a16","a17","a18","a19","a20",
-"audiobobo","a22","a23","a24","a25",
-"risada1","risada2","risada3",
-"a29","a30"
+
+"a1","a2","a3",
+"a6","a7","a8",
+"a11","a12","a13",
+"a16","a17","a18",
+"audiobobo","a22","a23",
+"risada1","risada2","risada3"
+
 ]
 
 lista.forEach(function(id){
@@ -130,12 +109,14 @@ audios[id] = new Audio(id + ".mp3")
 
 }
 
-
-/* FUNÇÃO DE TOCAR */
-
 function play(btn,id){
 
 var audio = audios[id]
+
+if(!audio){
+console.log("audio não encontrado",id)
+return
+}
 
 audio.currentTime = 0
 
