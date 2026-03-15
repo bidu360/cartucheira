@@ -47,7 +47,7 @@ border:none;
 .tab.trilhas.active{background:#6fb1ce;color:black;}
 .tab.vinil.active{background:#ff9800;color:black;}
 
-/* telas */
+/* TELAS */
 
 .tela{display:none;}
 .tela.active{display:block;}
@@ -76,7 +76,6 @@ overflow:hidden;
 .rosa{background:#ff4fa3;color:white;}
 .azulclaro{background:#6fb1ce;color:black;}
 .laranja{background:#ff9800;}
-.cinza{background:#555;color:white;}
 
 .playing{
 background:#00c853 !important;
@@ -90,7 +89,7 @@ animation:piscar 0.8s infinite;
 100%{opacity:1;}
 }
 
-/* barra progresso */
+/* BARRA PROGRESSO */
 
 .progress{
 width:0%;
@@ -101,24 +100,30 @@ bottom:0;
 left:0;
 }
 
-/* VU METER */
+/* VU */
 
 .vumeter{
-width:100%;
 padding:10px 30px 30px 30px;
 display:none;
 }
 
-.vu-line{
+.vu-scale{
+font-size:12px;
+letter-spacing:4px;
+opacity:0.8;
+margin-bottom:6px;
+}
+
+.vu-track{
 width:100%;
 height:14px;
 background:#111;
 border-radius:6px;
 overflow:hidden;
-margin-top:6px;
+margin-bottom:6px;
 }
 
-.vu-bar{
+.vu-led{
 height:100%;
 width:10%;
 background:linear-gradient(
@@ -132,11 +137,11 @@ animation:vuAnim 0.25s infinite alternate;
 }
 
 @keyframes vuAnim{
-0%{width:10%}
+0%{width:8%}
 20%{width:35%}
 40%{width:60%}
-60%{width:40%}
-80%{width:80%}
+60%{width:45%}
+80%{width:85%}
 100%{width:30%}
 }
 
@@ -175,22 +180,29 @@ CARTUCHEIRA • BY MOZA
 </div>
 
 <div class="tabs">
+
 <button class="tab active" onclick="trocarTela('inicio',this)">INÍCIO</button>
 <button class="tab efeitos" onclick="trocarTela('efeitos',this)">EFEITOS</button>
 <button class="tab trilhas" onclick="trocarTela('trilhas',this)">TRILHAS</button>
 <button class="tab vinil" onclick="trocarTela('vinil',this)">DISCO DE VINIL</button>
+
 </div>
 
 <!-- INICIO -->
 
 <div id="inicio" class="tela active">
+
 <div class="inicio">
+
 <img src="logo.png" class="logo">
+
 <div class="creditos">
 Cartucheira desenvolvida por Moza para uso próprio em produção e operação de áudio.<br>
 © 2026 • Todos os direitos reservados.
 </div>
+
 </div>
+
 </div>
 
 <!-- EFEITOS -->
@@ -211,53 +223,27 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 <button class="rosa" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
 <button class="rosa" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
 
-</div>
+<button class="rosa" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada3')">RISADA 3<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a5')">SOM 5<div class="progress"></div></button>
 
-<div id="vu" class="vumeter">
-<div class="vu-line"><div class="vu-bar"></div></div>
-<div class="vu-line"><div class="vu-bar"></div></div>
-</div>
-
-</div>
-
-<!-- TRILHAS -->
-
-<div id="trilhas" class="tela">
-
-<div class="grid">
-
-<button class="azulclaro" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
-<button class="azulclaro" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
-<button class="azulclaro" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
-<button class="azulclaro" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
-<button class="azulclaro" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a6')">SOM 6<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a7')">SOM 7<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a8')">SOM 8<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a9')">SOM 9<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a10')">SOM 10<div class="progress"></div></button>
 
 </div>
 
 <div class="vumeter">
-<div class="vu-line"><div class="vu-bar"></div></div>
-<div class="vu-line"><div class="vu-bar"></div></div>
-</div>
 
-</div>
+<div class="vu-scale">-30 -20 -10 -5 0 +3</div>
 
-<!-- VINIL -->
+<div class="vu-track"><div class="vu-led"></div></div>
+<div class="vu-track"><div class="vu-led"></div></div>
 
-<div id="vinil" class="tela">
-
-<div class="grid">
-
-<button class="laranja">VINIL 1</button>
-<button class="laranja">VINIL 2</button>
-<button class="laranja">VINIL 3</button>
-<button class="laranja">VINIL 4</button>
-<button class="laranja">VINIL 5</button>
-
-</div>
-
-<div class="vumeter">
-<div class="vu-line"><div class="vu-bar"></div></div>
-<div class="vu-line"><div class="vu-bar"></div></div>
 </div>
 
 </div>
@@ -266,16 +252,10 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 
 function trocarTela(id,el){
 
-document.querySelectorAll(".tela").forEach(t=>{
-t.classList.remove("active")
-})
-
+document.querySelectorAll(".tela").forEach(t=>t.classList.remove("active"))
 document.getElementById(id).classList.add("active")
 
-document.querySelectorAll(".tab").forEach(t=>{
-t.classList.remove("active")
-})
-
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 el.classList.add("active")
 
 }
@@ -285,10 +265,12 @@ var audios={}
 window.onload=function(){
 
 var lista=[
+
 "gloriaaleluia1","gloriaaleluia2","cowboy","heee",
 "gemido","palmas","assovio","buzina","metralhadora",
-"audiobobo",
-"trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy"
+"audiobobo","beijo","risada1","risada2","risada3",
+"a5","a6","a7","a8","a9","a10"
+
 ]
 
 lista.forEach(function(id){
@@ -298,15 +280,11 @@ audios[id]=new Audio(id+".mp3")
 }
 
 function ligarVU(){
-document.querySelectorAll(".vumeter").forEach(v=>{
-v.style.display="block"
-})
+document.querySelectorAll(".vumeter").forEach(v=>v.style.display="block")
 }
 
 function desligarVU(){
-document.querySelectorAll(".vumeter").forEach(v=>{
-v.style.display="none"
-})
+document.querySelectorAll(".vumeter").forEach(v=>v.style.display="none")
 }
 
 function play(btn,id){
@@ -316,20 +294,43 @@ var progress=btn.querySelector(".progress")
 
 if(!audio)return
 
+/* FADE OUT SE ESTIVER TOCANDO */
+
 if(!audio.paused){
+
+var fade=setInterval(function(){
+
+if(audio.volume>0.05){
+audio.volume-=0.05
+}else{
+
+clearInterval(fade)
 
 audio.pause()
 audio.currentTime=0
+audio.volume=1
+
 btn.classList.remove("playing")
 progress.style.width="0%"
+
 desligarVU()
-return
 
 }
 
+},50)
+
+return
+}
+
+/* TOCAR */
+
 audio.currentTime=0
+audio.volume=1
+
 btn.classList.add("playing")
+
 audio.play()
+
 ligarVU()
 
 var interval=setInterval(function(){
@@ -346,6 +347,7 @@ audio.onended=function(){
 clearInterval(interval)
 progress.style.width="0%"
 btn.classList.remove("playing")
+
 desligarVU()
 
 }
