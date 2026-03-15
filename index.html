@@ -1,243 +1,204 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
+
 <head>
+
 <meta charset="UTF-8">
 <title>Cartucheira</title>
 
 <style>
 
 body{
-background:#111;
+background:#0a0a0a;
 font-family:Arial;
-color:white;
+margin:0;
+}
+
+.assinatura{
 text-align:center;
-}
-
-h1{
-margin-top:10px;
-}
-
-.abas{
-margin:20px;
-}
-
-.abas button{
-padding:10px 20px;
-margin:5px;
-background:#333;
 color:white;
-border:none;
-cursor:pointer;
-font-size:16px;
-}
-
-.abas button:hover{
-background:#555;
-}
-
-.aba{
-display:none;
-}
-
-.aba.ativa{
-display:block;
+font-weight:bold;
+letter-spacing:2px;
+padding:15px;
+font-size:20px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-padding:20px;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+padding:30px;
 }
 
-.cartucho{
-padding:20px;
-background:#222;
+button{
+padding:35px;
+font-size:18px;
+border-radius:10px;
 border:none;
-color:white;
-font-size:15px;
 cursor:pointer;
-}
-
-.cartucho:hover{
-background:#444;
-}
-
-#vu{
-width:300px;
-height:20px;
-background:#333;
-margin:20px auto;
 position:relative;
+overflow:hidden;
 }
 
-#vu-bar{
-height:100%;
+.laranja{background:#ff9800;}
+.cinza{background:#555;color:white;}
+.azul{background:#6fb1ce;}
+.amarelo{background:#ffd400;}
+
+.playing{
+background:#00c853 !important;
+color:white;
+animation:piscar 0.8s infinite;
+}
+
+/* animação do piscar */
+
+@keyframes piscar{
+
+0%{opacity:1;}
+50%{opacity:0.4;}
+100%{opacity:1;}
+
+}
+
+/* barra de progresso */
+
+.progress{
 width:0%;
-background:lime;
-}
-
-#progress{
-width:300px;
-margin:auto;
+height:6px;
+background:#ffffff;
+position:absolute;
+bottom:0;
+left:0;
+border-radius:0 0 10px 10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>CARTUCHEIRA</h1>
-
-<div id="vu">
-<div id="vu-bar"></div>
-</div>
-
-<progress id="progress" value="0" max="100"></progress>
-
-<div class="abas">
-
-<button onclick="trocarAba('efeitos')">EFEITOS</button>
-
-<button onclick="trocarAba('trilhas')">TRILHAS</button>
-
-<button onclick="trocarAba('vinil')">DISCO DE VINIL</button>
-
-</div>
-
-<!-- ABA EFEITOS -->
-
-<div id="efeitos" class="aba ativa">
+<h2 class="assinatura">CARTUCHEIRA • BY MOZA</h2>
 
 <div class="grid">
 
-<button class="cartucho" onclick="tocar('audios/risada.mp3')">RISADA</button>
+<!-- LINHA 1 -->
+<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
 
-<button class="cartucho" onclick="tocar('audios/aplausos.mp3')">APLAUSOS</button>
+<!-- LINHA 2 -->
+<button class="cinza" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
 
-<button class="cartucho" onclick="tocar('audios/erro.mp3')">ERRO</button>
+<!-- LINHA 3 -->
+<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
 
-<button class="cartucho" onclick="tocar('audios/suspense.mp3')">SUSPENSE</button>
 
-</div>
+<!-- LINHA 4 -->
+<button class="cinza" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
 
-</div>
-
-<!-- ABA TRILHAS -->
-
-<div id="trilhas" class="aba">
-
-<div class="grid">
-
-<button class="cartucho" onclick="tocar('audios/trilha1.mp3')">TRILHA 1</button>
-
-<button class="cartucho" onclick="tocar('audios/trilha2.mp3')">TRILHA 2</button>
-
-<button class="cartucho" onclick="tocar('audios/trilha3.mp3')">TRILHA 3</button>
-
-<button class="cartucho" onclick="tocar('audios/trilha4.mp3')">TRILHA 4</button>
-
-</div>
-
-</div>
-
-<!-- ABA VINIL -->
-
-<div id="vinil" class="aba">
-
-<div class="grid">
-
-<button class="cartucho" onclick="tocar('audios/vinil1.mp3')">VINIL 1</button>
-
-<button class="cartucho" onclick="tocar('audios/vinil2.mp3')">VINIL 2</button>
-
-<button class="cartucho" onclick="tocar('audios/vinil3.mp3')">VINIL 3</button>
-
-<button class="cartucho" onclick="tocar('audios/vinil4.mp3')">VINIL 4</button>
-
-</div>
+<!-- LINHA 5 -->
+<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada1')">RISADA1<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada2')">RISADA2<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada3')">RISADA3<div class="progress"></div></button>
 
 </div>
 
 <script>
 
-let audio = new Audio()
+var audios = {}
 
-let ctx = new (window.AudioContext || window.webkitAudioContext)()
+window.onload = function(){
 
-let analyser = ctx.createAnalyser()
-analyser.fftSize = 256
+var lista = [
 
-let source = ctx.createMediaElementSource(audio)
+"gloriaaleluia1","gloriaaleluia2","cowboy","heee","a5",
+"a6","a7","a8","a9","a10",
+"trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy",
+"gemido","palmas","assovio","buzina","metralhadora",
+"audiobobo","beijo",
+"risada1","risada2","risada3"
 
-source.connect(analyser)
-analyser.connect(ctx.destination)
+]
 
-function tocar(src){
+lista.forEach(function(id){
 
+audios[id] = new Audio(id + ".mp3")
+
+})
+
+}
+
+function play(btn,id){
+
+var audio = audios[id]
+var progress = btn.querySelector(".progress")
+
+if(!audio){
+console.log("Áudio não encontrado:",id)
+return
+}
+
+if(!audio.paused){
+
+var fade = setInterval(function(){
+
+if(audio.volume > 0.05){
+audio.volume -= 0.05
+}else{
+clearInterval(fade)
 audio.pause()
+audio.currentTime = 0
+audio.volume = 1
+btn.classList.remove("playing")
+progress.style.width="0%"
+}
 
-audio.src = src
+},50)
+
+return
+}
 
 audio.currentTime = 0
+audio.volume = 1
+
+btn.classList.add("playing")
 
 audio.play()
 
-}
+var interval = setInterval(function(){
 
-function trocarAba(nome){
-
-document.querySelectorAll('.aba').forEach(a=>a.classList.remove('ativa'))
-
-document.getElementById(nome).classList.add('ativa')
-
-}
-
-let data = new Uint8Array(analyser.frequencyBinCount)
-
-function monitorVU(){
-
-analyser.getByteFrequencyData(data)
-
-let soma = data.reduce((a,b)=>a+b)
-
-let media = soma/data.length
-
-let porcentagem = media/255*100
-
-document.getElementById("vu-bar").style.width = porcentagem+"%"
-
-requestAnimationFrame(monitorVU)
-
-}
-
-monitorVU()
-
-audio.ontimeupdate = function(){
-
-let porcent = (audio.currentTime/audio.duration)*100
-
-document.getElementById("progress").value = porcent
-
-}
-
-function fadeOut(){
-
-let fade = setInterval(()=>{
-
-if(audio.volume>0.05){
-
-audio.volume -=0.05
-
-}else{
-
-audio.pause()
-
-clearInterval(fade)
-
+if(audio.duration){
+var percent = (audio.currentTime / audio.duration) * 100
+progress.style.width = percent + "%"
 }
 
 },100)
+
+audio.onended = function(){
+
+clearInterval(interval)
+progress.style.width="0%"
+btn.classList.remove("playing")
+
+}
 
 }
 
