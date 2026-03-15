@@ -23,12 +23,47 @@ padding:15px;
 font-size:20px;
 }
 
+/* ABAS */
+
+.tabs{
+display:flex;
+justify-content:center;
+background:#111;
+padding:10px;
+gap:10px;
+}
+
+.tab{
+padding:12px 25px;
+background:#333;
+color:white;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.tab.active{
+background:#00c853;
+}
+
+/* GRID BOTÕES */
+
 .grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:20px;
 padding:30px;
 }
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
+
+/* BOTÕES */
 
 button{
 padding:35px;
@@ -40,18 +75,15 @@ position:relative;
 overflow:hidden;
 }
 
-.laranja{background:#ff9800;}
-.cinza{background:#555;color:white;}
+.rosa{background:#ff8ac7;}
 .azul{background:#6fb1ce;}
-.amarelo{background:#ffd400;}
+.laranja{background:#ff9800;}
 
 .playing{
 background:#00c853 !important;
 color:white;
 animation:piscar 0.8s infinite;
 }
-
-/* animação do piscar */
 
 @keyframes piscar{
 
@@ -61,7 +93,7 @@ animation:piscar 0.8s infinite;
 
 }
 
-/* barra de progresso */
+/* BARRA PROGRESSO */
 
 .progress{
 width:0%;
@@ -81,43 +113,132 @@ border-radius:0 0 10px 10px;
 
 <h2 class="assinatura">CARTUCHEIRA • BY MOZA</h2>
 
+<!-- ABAS -->
+
+<div class="tabs">
+
+<div class="tab active" onclick="openTab('principal',this)">PRINCIPAL</div>
+<div class="tab" onclick="openTab('efeitos',this)">EFEITO</div>
+<div class="tab" onclick="openTab('trilhas',this)">TRILHA</div>
+<div class="tab" onclick="openTab('vinil',this)">DISCO DE VINIL</div>
+
+</div>
+
+<!-- PRINCIPAL -->
+
+<div id="principal" class="page active">
+
 <div class="grid">
 
-<!-- LINHA 1 -->
-<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
+<button class="rosa">Painel Principal</button>
+<button class="rosa">Painel Principal</button>
+<button class="rosa">Painel Principal</button>
+<button class="rosa">Painel Principal</button>
+<button class="rosa">Painel Principal</button>
 
-<!-- LINHA 2 -->
-<button class="cinza" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
+</div>
 
-<!-- LINHA 3 -->
+</div>
+
+<!-- EFEITOS -->
+
+<div id="efeitos" class="page">
+
+<div class="grid">
+
+<button class="rosa" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada3')">RISADA 3<div class="progress"></div></button>
+
+</div>
+
+</div>
+
+<!-- TRILHAS -->
+
+<div id="trilhas" class="page">
+
+<div class="grid">
+
 <button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
 
+<button class="azul">TRILHA 6</button>
+<button class="azul">TRILHA 7</button>
+<button class="azul">TRILHA 8</button>
+<button class="azul">TRILHA 9</button>
+<button class="azul">TRILHA 10</button>
 
-<!-- LINHA 4 -->
-<button class="cinza" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+<button class="azul">TRILHA 11</button>
+<button class="azul">TRILHA 12</button>
+<button class="azul">TRILHA 13</button>
+<button class="azul">TRILHA 14</button>
+<button class="azul">TRILHA 15</button>
 
-<!-- LINHA 5 -->
-<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada1')">RISADA1<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada2')">RISADA2<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada3')">RISADA3<div class="progress"></div></button>
+<button class="azul">TRILHA 16</button>
+<button class="azul">TRILHA 17</button>
+<button class="azul">TRILHA 18</button>
+<button class="azul">TRILHA 19</button>
+<button class="azul">TRILHA 20</button>
+
+</div>
+
+</div>
+
+<!-- DISCO VINIL -->
+
+<div id="vinil" class="page">
+
+<div class="grid">
+
+<button class="laranja">VINIL 1</button>
+<button class="laranja">VINIL 2</button>
+<button class="laranja">VINIL 3</button>
+<button class="laranja">VINIL 4</button>
+<button class="laranja">VINIL 5</button>
+
+<button class="laranja">VINIL 6</button>
+<button class="laranja">VINIL 7</button>
+<button class="laranja">VINIL 8</button>
+<button class="laranja">VINIL 9</button>
+<button class="laranja">VINIL 10</button>
+
+<button class="laranja">VINIL 11</button>
+<button class="laranja">VINIL 12</button>
+<button class="laranja">VINIL 13</button>
+<button class="laranja">VINIL 14</button>
+<button class="laranja">VINIL 15</button>
+
+<button class="laranja">VINIL 16</button>
+<button class="laranja">VINIL 17</button>
+<button class="laranja">VINIL 18</button>
+<button class="laranja">VINIL 19</button>
+<button class="laranja">VINIL 20</button>
+
+</div>
 
 </div>
 
@@ -133,8 +254,7 @@ var lista = [
 "a6","a7","a8","a9","a10",
 "trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy",
 "gemido","palmas","assovio","buzina","metralhadora",
-"audiobobo","beijo",
-"risada1","risada2","risada3"
+"audiobobo","beijo","risada1","risada2","risada3"
 
 ]
 
@@ -151,10 +271,7 @@ function play(btn,id){
 var audio = audios[id]
 var progress = btn.querySelector(".progress")
 
-if(!audio){
-console.log("Áudio não encontrado:",id)
-return
-}
+if(!audio)return
 
 if(!audio.paused){
 
@@ -199,6 +316,18 @@ progress.style.width="0%"
 btn.classList.remove("playing")
 
 }
+
+}
+
+/* SISTEMA DE ABAS */
+
+function openTab(id,element){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+
+document.getElementById(id).classList.add("active")
+element.classList.add("active")
 
 }
 
