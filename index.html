@@ -15,21 +15,21 @@ margin:0;
 color:white;
 }
 
-/* barra superior */
+/* TOPO */
 
 .topo{
 text-align:center;
-padding:15px;
-font-size:20px;
+color:white;
 font-weight:bold;
 letter-spacing:2px;
+padding:15px;
+font-size:20px;
 }
 
-/* abas */
+/* ABAS */
 
 .tabs{
 display:flex;
-background:#111;
 }
 
 .tab{
@@ -37,26 +37,27 @@ flex:1;
 padding:15px;
 text-align:center;
 cursor:pointer;
-background:#1a1a1a;
-}
-
-.tab.active{
-background:#ff9800;
-color:black;
+background:#111;
+color:white;
 font-weight:bold;
 }
 
+.tab.active{
+color:white;
+}
+
+/* cores das abas */
+
+.tab.efeitos.active{background:#ff4fa3;}
+.tab.trilhas.active{background:#6fb1ce;color:black;}
+.tab.vinil.active{background:#ff9800;color:black;}
+
 /* telas */
 
-.tela{
-display:none;
-}
+.tela{display:none;}
+.tela.active{display:block;}
 
-.tela.active{
-display:block;
-}
-
-/* grid botões */
+/* grid */
 
 .grid{
 display:grid;
@@ -65,9 +66,11 @@ gap:20px;
 padding:30px;
 }
 
+/* botões */
+
 button{
 padding:35px;
-font-size:18px;
+font-size:16px;
 border-radius:10px;
 border:none;
 cursor:pointer;
@@ -75,10 +78,12 @@ position:relative;
 overflow:hidden;
 }
 
+/* cores botões */
+
+.rosa{background:#ff4fa3;color:white;}
+.azulclaro{background:#6fb1ce;color:black;}
 .laranja{background:#ff9800;}
 .cinza{background:#555;color:white;}
-.azul{background:#6fb1ce;}
-.amarelo{background:#ffd400;}
 
 .playing{
 background:#00c853 !important;
@@ -87,12 +92,12 @@ animation:piscar 0.8s infinite;
 }
 
 @keyframes piscar{
-
 0%{opacity:1;}
 50%{opacity:0.4;}
 100%{opacity:1;}
-
 }
+
+/* barra progresso */
 
 .progress{
 width:0%;
@@ -108,7 +113,7 @@ border-radius:0 0 10px 10px;
 
 .inicio{
 text-align:center;
-padding:80px;
+padding:100px;
 font-size:22px;
 }
 
@@ -125,9 +130,9 @@ CARTUCHEIRA • BY MOZA
 <div class="tabs">
 
 <div class="tab active" onclick="trocarTela('inicio',this)">INÍCIO</div>
-<div class="tab" onclick="trocarTela('efeitos',this)">EFEITOS</div>
-<div class="tab" onclick="trocarTela('trilhas',this)">TRILHAS</div>
-<div class="tab" onclick="trocarTela('vinil',this)">DISCO DE VINIL</div>
+<div class="tab efeitos" onclick="trocarTela('efeitos',this)">EFEITOS</div>
+<div class="tab trilhas" onclick="trocarTela('trilhas',this)">TRILHAS</div>
+<div class="tab vinil" onclick="trocarTela('vinil',this)">DISCO DE VINIL</div>
 
 </div>
 
@@ -151,11 +156,29 @@ CARTUCHEIRA • BY MOZA
 
 <div class="grid">
 
-<button class="cinza" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada3')">RISADA 3<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a5')">SOM 5<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'a6')">SOM 6<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a7')">SOM 7<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a8')">SOM 8<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a9')">SOM 9<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a10')">SOM 10<div class="progress"></div></button>
 
 </div>
 
@@ -167,11 +190,29 @@ CARTUCHEIRA • BY MOZA
 
 <div class="grid">
 
-<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
+<button class="azulclaro" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
+<button class="azulclaro" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
+<button class="azulclaro" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
+<button class="azulclaro" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
+<button class="azulclaro" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
+
+<button class="azulclaro">TRILHA 6</button>
+<button class="azulclaro">TRILHA 7</button>
+<button class="azulclaro">TRILHA 8</button>
+<button class="azulclaro">TRILHA 9</button>
+<button class="azulclaro">TRILHA 10</button>
+
+<button class="azulclaro">TRILHA 11</button>
+<button class="azulclaro">TRILHA 12</button>
+<button class="azulclaro">TRILHA 13</button>
+<button class="azulclaro">TRILHA 14</button>
+<button class="azulclaro">TRILHA 15</button>
+
+<button class="azulclaro">TRILHA 16</button>
+<button class="azulclaro">TRILHA 17</button>
+<button class="azulclaro">TRILHA 18</button>
+<button class="azulclaro">TRILHA 19</button>
+<button class="azulclaro">TRILHA 20</button>
 
 </div>
 
@@ -183,11 +224,29 @@ CARTUCHEIRA • BY MOZA
 
 <div class="grid">
 
-<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'a5')">SOM 5<div class="progress"></div></button>
+<button class="laranja">VINIL 1</button>
+<button class="laranja">VINIL 2</button>
+<button class="laranja">VINIL 3</button>
+<button class="laranja">VINIL 4</button>
+<button class="laranja">VINIL 5</button>
+
+<button class="laranja">VINIL 6</button>
+<button class="laranja">VINIL 7</button>
+<button class="laranja">VINIL 8</button>
+<button class="laranja">VINIL 9</button>
+<button class="laranja">VINIL 10</button>
+
+<button class="laranja">VINIL 11</button>
+<button class="laranja">VINIL 12</button>
+<button class="laranja">VINIL 13</button>
+<button class="laranja">VINIL 14</button>
+<button class="laranja">VINIL 15</button>
+
+<button class="laranja">VINIL 16</button>
+<button class="laranja">VINIL 17</button>
+<button class="laranja">VINIL 18</button>
+<button class="laranja">VINIL 19</button>
+<button class="laranja">VINIL 20</button>
 
 </div>
 
@@ -195,7 +254,7 @@ CARTUCHEIRA • BY MOZA
 
 <script>
 
-/* troca de abas */
+/* troca abas */
 
 function trocarTela(id,el){
 
@@ -213,7 +272,7 @@ el.classList.add("active")
 
 }
 
-/* motor audio (seu código original) */
+/* motor audio */
 
 var audios = {}
 
@@ -222,9 +281,11 @@ window.onload = function(){
 var lista = [
 
 "gloriaaleluia1","gloriaaleluia2","cowboy","heee",
-"trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy",
-"palmas","assovio","buzina",
-"risada1","risada2"
+"a5","a6","a7","a8","a9","a10",
+"gemido","palmas","assovio","buzina","metralhadora",
+"audiobobo","beijo","risada1","risada2","risada3",
+
+"trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy"
 
 ]
 
