@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
 
@@ -9,41 +9,83 @@
 <style>
 
 body{
-background:#0a0a0a;
+background:#000;
 font-family:Arial;
 margin:0;
+color:white;
 }
 
-.assinatura{
+.topo{
 text-align:center;
-color:white;
-font-weight:bold;
-letter-spacing:2px;
 padding:15px;
-font-size:20px;
+font-size:22px;
+letter-spacing:2px;
+}
+
+.menu{
+display:flex;
+justify-content:center;
+background:#111;
+}
+
+.menu button{
+padding:15px 35px;
+border:none;
+background:#111;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.menu button:hover{
+background:#222;
+}
+
+.aba{
+display:none;
+}
+
+.aba.ativa{
+display:block;
+}
+
+.inicio{
+text-align:center;
+padding-top:80px;
+}
+
+.inicio img{
+width:350px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:20px;
-padding:30px;
+padding:40px;
 }
 
-button{
+button.cartucho{
 padding:35px;
-font-size:18px;
-border-radius:10px;
 border:none;
+border-radius:10px;
+font-size:16px;
 cursor:pointer;
 position:relative;
 overflow:hidden;
 }
 
-.laranja{background:#ff9800;}
-.cinza{background:#555;color:white;}
-.azul{background:#6fb1ce;}
-.amarelo{background:#ffd400;}
+.efeitos{
+background:#ffb6c1;
+}
+
+.trilhas{
+background:#9fd4ff;
+}
+
+.vinil{
+background:#ff9800;
+}
 
 .playing{
 background:#00c853 !important;
@@ -51,26 +93,19 @@ color:white;
 animation:piscar 0.8s infinite;
 }
 
-/* animação do piscar */
-
 @keyframes piscar{
-
 0%{opacity:1;}
 50%{opacity:0.4;}
 100%{opacity:1;}
-
 }
-
-/* barra de progresso */
 
 .progress{
 width:0%;
 height:6px;
-background:#ffffff;
+background:#fff;
 position:absolute;
 bottom:0;
 left:0;
-border-radius:0 0 10px 10px;
 }
 
 </style>
@@ -79,45 +114,132 @@ border-radius:0 0 10px 10px;
 
 <body>
 
-<h2 class="assinatura">CARTUCHEIRA • BY MOZA</h2>
+<div class="topo">
+CARTUCHEIRA • BY MOZA
+</div>
+
+<div class="menu">
+
+<button onclick="trocarAba('inicio')">INÍCIO</button>
+<button onclick="trocarAba('efeitos')">EFEITOS</button>
+<button onclick="trocarAba('trilhas')">TRILHAS</button>
+<button onclick="trocarAba('vinil')">DISCO DE VINIL</button>
+
+</div>
+
+<!-- INICIO -->
+
+<div id="inicio" class="aba ativa">
+
+<div class="inicio">
+
+<img src="mozasound.png">
+
+<p>Cartucheira desenvolvida por Moza para uso em produção de áudio.</p>
+
+</div>
+
+</div>
+
+<!-- EFEITOS -->
+
+<div id="efeitos" class="aba">
 
 <div class="grid">
 
-<!-- LINHA 1 -->
-<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito1')">EFEITO 1<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito2')">EFEITO 2<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito3')">EFEITO 3<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito4')">EFEITO 4<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito5')">EFEITO 5<div class="progress"></div></button>
 
-<!-- LINHA 2 -->
-<button class="cinza" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito6')">EFEITO 6<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito7')">EFEITO 7<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito8')">EFEITO 8<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito9')">EFEITO 9<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito10')">EFEITO 10<div class="progress"></div></button>
 
-<!-- LINHA 3 -->
-<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
-<button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito11')">EFEITO 11<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito12')">EFEITO 12<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito13')">EFEITO 13<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito14')">EFEITO 14<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito15')">EFEITO 15<div class="progress"></div></button>
 
+<button class="cartucho efeitos" onclick="play(this,'efeito16')">EFEITO 16<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito17')">EFEITO 17<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito18')">EFEITO 18<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito19')">EFEITO 19<div class="progress"></div></button>
+<button class="cartucho efeitos" onclick="play(this,'efeito20')">EFEITO 20<div class="progress"></div></button>
 
-<!-- LINHA 4 -->
-<button class="cinza" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+</div>
 
-<!-- LINHA 5 -->
-<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada1')">RISADA1<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada2')">RISADA2<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada3')">RISADA3<div class="progress"></div></button>
+</div>
+
+<!-- TRILHAS -->
+
+<div id="trilhas" class="aba">
+
+<div class="grid">
+
+<button class="cartucho trilhas" onclick="play(this,'trilha1')">TRILHA 1<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha2')">TRILHA 2<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha3')">TRILHA 3<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha4')">TRILHA 4<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha5')">TRILHA 5<div class="progress"></div></button>
+
+<button class="cartucho trilhas" onclick="play(this,'trilha6')">TRILHA 6<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha7')">TRILHA 7<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha8')">TRILHA 8<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha9')">TRILHA 9<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha10')">TRILHA 10<div class="progress"></div></button>
+
+<button class="cartucho trilhas" onclick="play(this,'trilha11')">TRILHA 11<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha12')">TRILHA 12<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha13')">TRILHA 13<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha14')">TRILHA 14<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha15')">TRILHA 15<div class="progress"></div></button>
+
+<button class="cartucho trilhas" onclick="play(this,'trilha16')">TRILHA 16<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha17')">TRILHA 17<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha18')">TRILHA 18<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha19')">TRILHA 19<div class="progress"></div></button>
+<button class="cartucho trilhas" onclick="play(this,'trilha20')">TRILHA 20<div class="progress"></div></button>
+
+</div>
+
+</div>
+
+<!-- DISCO VINIL -->
+
+<div id="vinil" class="aba">
+
+<div class="grid">
+
+<button class="cartucho vinil" onclick="play(this,'vinil1')">VINIL 1<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil2')">VINIL 2<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil3')">VINIL 3<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil4')">VINIL 4<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil5')">VINIL 5<div class="progress"></div></button>
+
+<button class="cartucho vinil" onclick="play(this,'vinil6')">VINIL 6<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil7')">VINIL 7<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil8')">VINIL 8<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil9')">VINIL 9<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil10')">VINIL 10<div class="progress"></div></button>
+
+<button class="cartucho vinil" onclick="play(this,'vinil11')">VINIL 11<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil12')">VINIL 12<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil13')">VINIL 13<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil14')">VINIL 14<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil15')">VINIL 15<div class="progress"></div></button>
+
+<button class="cartucho vinil" onclick="play(this,'vinil16')">VINIL 16<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil17')">VINIL 17<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil18')">VINIL 18<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil19')">VINIL 19<div class="progress"></div></button>
+<button class="cartucho vinil" onclick="play(this,'vinil20')">VINIL 20<div class="progress"></div></button>
+
+</div>
 
 </div>
 
@@ -127,22 +249,31 @@ var audios = {}
 
 window.onload = function(){
 
-var lista = [
+var lista = []
 
-"gloriaaleluia1","gloriaaleluia2","cowboy","heee","a5",
-"a6","a7","a8","a9","a10",
-"trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy",
-"gemido","palmas","assovio","buzina","metralhadora",
-"audiobobo","beijo",
-"risada1","risada2","risada3"
+for(let i=1;i<=20;i++){
 
-]
+lista.push("efeito"+i)
+lista.push("trilha"+i)
+lista.push("vinil"+i)
+
+}
 
 lista.forEach(function(id){
 
-audios[id] = new Audio(id + ".mp3")
+audios[id] = new Audio("audios/"+id+".mp3")
 
 })
+
+}
+
+function trocarAba(nome){
+
+document.querySelectorAll(".aba").forEach(function(el){
+el.classList.remove("ativa")
+})
+
+document.getElementById(nome).classList.add("ativa")
 
 }
 
@@ -151,22 +282,19 @@ function play(btn,id){
 var audio = audios[id]
 var progress = btn.querySelector(".progress")
 
-if(!audio){
-console.log("Áudio não encontrado:",id)
-return
-}
+if(!audio) return
 
 if(!audio.paused){
 
 var fade = setInterval(function(){
 
-if(audio.volume > 0.05){
-audio.volume -= 0.05
+if(audio.volume>0.05){
+audio.volume -=0.05
 }else{
 clearInterval(fade)
 audio.pause()
-audio.currentTime = 0
-audio.volume = 1
+audio.currentTime=0
+audio.volume=1
 btn.classList.remove("playing")
 progress.style.width="0%"
 }
@@ -174,10 +302,11 @@ progress.style.width="0%"
 },50)
 
 return
+
 }
 
-audio.currentTime = 0
-audio.volume = 1
+audio.currentTime=0
+audio.volume=1
 
 btn.classList.add("playing")
 
@@ -186,8 +315,11 @@ audio.play()
 var interval = setInterval(function(){
 
 if(audio.duration){
-var percent = (audio.currentTime / audio.duration) * 100
+
+var percent = (audio.currentTime/audio.duration)*100
+
 progress.style.width = percent + "%"
+
 }
 
 },100)
