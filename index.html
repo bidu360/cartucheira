@@ -25,6 +25,24 @@ font-size:20px;
 font-weight:bold;
 }
 
+/* VU METER */
+
+.vu-container{
+width:90%;
+height:18px;
+margin:0 auto 10px auto;
+background:#111;
+border-radius:4px;
+overflow:hidden;
+}
+
+.vu-bar{
+height:100%;
+width:0%;
+background:linear-gradient(to right, #00ff00 0%, #ffff00 70%, #ff0000 100%);
+transition:width 0.05s;
+}
+
 /* ABAS */
 
 .tabs{
@@ -43,7 +61,7 @@ cursor:pointer;
 color:#00c853;
 }
 
-/* PÁGINAS */
+/* PAGINAS */
 
 .page{
 display:none;
@@ -53,7 +71,7 @@ display:none;
 display:block;
 }
 
-/* GRID BOTÕES */
+/* GRID */
 
 .grid{
 display:grid;
@@ -101,7 +119,7 @@ bottom:0;
 left:0;
 }
 
-/* PAGINA PRINCIPAL */
+/* HOME */
 
 .home{
 display:flex;
@@ -132,6 +150,12 @@ line-height:24px;
 <body>
 
 <div class="assinatura">CARTUCHEIRA • BY MOZA</div>
+
+<!-- VU METER -->
+
+<div class="vu-container">
+<div class="vu-bar" id="vu"></div>
+</div>
 
 <div class="tabs">
 
@@ -227,7 +251,7 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 
 </div>
 
-<!-- DISCO VINIL -->
+<!-- VINIL -->
 
 <div id="vinil" class="page">
 
@@ -264,6 +288,7 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 <script>
 
 var audios = {}
+var vu = document.getElementById("vu")
 
 window.onload = function(){
 
@@ -305,6 +330,7 @@ audio.currentTime = 0
 audio.volume = 1
 btn.classList.remove("playing")
 progress.style.width="0%"
+vu.style.width="0%"
 }
 
 },50)
@@ -322,8 +348,13 @@ audio.play()
 var interval = setInterval(function(){
 
 if(audio.duration){
+
 var percent = (audio.currentTime / audio.duration) * 100
 progress.style.width = percent + "%"
+
+var vuLevel = Math.random() * 100
+vu.style.width = vuLevel + "%"
+
 }
 
 },100)
@@ -332,6 +363,7 @@ audio.onended = function(){
 
 clearInterval(interval)
 progress.style.width="0%"
+vu.style.width="0%"
 btn.classList.remove("playing")
 
 }
