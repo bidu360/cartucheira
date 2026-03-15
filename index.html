@@ -113,8 +113,19 @@ border-radius:0 0 10px 10px;
 
 .inicio{
 text-align:center;
-padding:100px;
-font-size:22px;
+padding:80px;
+}
+
+.logo{
+max-width:600px;
+width:90%;
+margin-bottom:30px;
+}
+
+.creditos{
+font-size:14px;
+opacity:0.8;
+letter-spacing:1px;
 }
 
 </style>
@@ -142,9 +153,12 @@ CARTUCHEIRA • BY MOZA
 
 <div class="inicio">
 
-<h1>CARTUCHEIRA</h1>
+<img src="logo.png" class="logo">
 
-<p>Desenvolvido por MOZA</p>
+<div class="creditos">
+Criado por MOZA<br>
+Todos os direitos reservados • 2026
+</div>
 
 </div>
 
@@ -254,8 +268,6 @@ CARTUCHEIRA • BY MOZA
 
 <script>
 
-/* troca abas */
-
 function trocarTela(id,el){
 
 document.querySelectorAll(".tela").forEach(t=>{
@@ -271,8 +283,6 @@ t.classList.remove("active")
 el.classList.add("active")
 
 }
-
-/* motor audio */
 
 var audios = {}
 
