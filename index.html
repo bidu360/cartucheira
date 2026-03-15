@@ -57,7 +57,7 @@ color:white;
 .tela{display:none;}
 .tela.active{display:block;}
 
-/* grid */
+/* GRID */
 
 .grid{
 display:grid;
@@ -66,7 +66,7 @@ gap:20px;
 padding:30px;
 }
 
-/* botões */
+/* BOTÕES */
 
 button{
 padding:35px;
@@ -78,7 +78,7 @@ position:relative;
 overflow:hidden;
 }
 
-/* cores botões */
+/* CORES */
 
 .rosa{background:#ff4fa3;color:white;}
 .azulclaro{background:#6fb1ce;color:black;}
@@ -109,23 +109,29 @@ left:0;
 border-radius:0 0 10px 10px;
 }
 
-/* tela inicio */
+/* INICIO */
 
 .inicio{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:70vh;
 text-align:center;
-padding:80px;
 }
 
 .logo{
 max-width:600px;
 width:90%;
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
 .creditos{
-font-size:14px;
-opacity:0.8;
-letter-spacing:1px;
+font-size:15px;
+opacity:0.85;
+letter-spacing:0.5px;
+max-width:600px;
+line-height:1.5;
 }
 
 </style>
@@ -156,8 +162,8 @@ CARTUCHEIRA • BY MOZA
 <img src="logo.png" class="logo">
 
 <div class="creditos">
-Criado por MOZA<br>
-Todos os direitos reservados • 2026
+Cartucheira desenvolvida por Moza para uso próprio em produção e operação de áudio.<br>
+© 2026 • Todos os direitos reservados.
 </div>
 
 </div>
