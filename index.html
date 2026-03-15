@@ -132,14 +132,25 @@ return
 
 if(!audio.paused){
 
+var fade = setInterval(function(){
+
+if(audio.volume > 0.05){
+audio.volume -= 0.05
+}else{
+clearInterval(fade)
 audio.pause()
 audio.currentTime = 0
+audio.volume = 1
 btn.classList.remove("playing")
-return
+}
 
+},50)
+
+return
 }
 
 audio.currentTime = 0
+audio.volume = 1
 
 btn.classList.add("playing")
 
