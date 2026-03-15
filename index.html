@@ -9,41 +9,48 @@
 <style>
 
 body{
-background:#0a0a0a;
+background:#000;
 font-family:Arial;
 margin:0;
+color:white;
 }
+
+/* TITULO */
 
 .assinatura{
 text-align:center;
-color:white;
-font-weight:bold;
 letter-spacing:2px;
 padding:15px;
 font-size:20px;
+font-weight:bold;
 }
 
 /* ABAS */
 
 .tabs{
 display:flex;
-justify-content:center;
+justify-content:space-around;
 background:#111;
-padding:10px;
-gap:10px;
-}
-
-.tab{
-padding:12px 25px;
-background:#333;
-color:white;
-border-radius:8px;
-cursor:pointer;
+padding:15px 0;
 font-weight:bold;
 }
 
+.tab{
+cursor:pointer;
+}
+
 .tab.active{
-background:#00c853;
+color:#00c853;
+}
+
+/* PÁGINAS */
+
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
 }
 
 /* GRID BOTÕES */
@@ -53,14 +60,6 @@ display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:20px;
 padding:30px;
-}
-
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
 }
 
 /* BOTÕES */
@@ -86,23 +85,44 @@ animation:piscar 0.8s infinite;
 }
 
 @keyframes piscar{
-
 0%{opacity:1;}
 50%{opacity:0.4;}
 100%{opacity:1;}
-
 }
 
-/* BARRA PROGRESSO */
+/* PROGRESSO */
 
 .progress{
 width:0%;
 height:6px;
-background:#ffffff;
+background:white;
 position:absolute;
 bottom:0;
 left:0;
-border-radius:0 0 10px 10px;
+}
+
+/* PAGINA PRINCIPAL */
+
+.home{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding-top:60px;
+}
+
+.logo{
+width:420px;
+max-width:80%;
+margin-bottom:40px;
+}
+
+.footer{
+color:#aaa;
+font-size:14px;
+margin-top:40px;
+line-height:24px;
 }
 
 </style>
@@ -111,15 +131,13 @@ border-radius:0 0 10px 10px;
 
 <body>
 
-<h2 class="assinatura">CARTUCHEIRA • BY MOZA</h2>
-
-<!-- ABAS -->
+<div class="assinatura">CARTUCHEIRA • BY MOZA</div>
 
 <div class="tabs">
 
-<div class="tab active" onclick="openTab('principal',this)">PRINCIPAL</div>
-<div class="tab" onclick="openTab('efeitos',this)">EFEITO</div>
-<div class="tab" onclick="openTab('trilhas',this)">TRILHA</div>
+<div class="tab active" onclick="openTab('principal',this)">INÍCIO</div>
+<div class="tab" onclick="openTab('efeitos',this)">EFEITOS</div>
+<div class="tab" onclick="openTab('trilhas',this)">TRILHAS</div>
 <div class="tab" onclick="openTab('vinil',this)">DISCO DE VINIL</div>
 
 </div>
@@ -128,13 +146,14 @@ border-radius:0 0 10px 10px;
 
 <div id="principal" class="page active">
 
-<div class="grid">
+<div class="home">
 
-<button class="rosa">Painel Principal</button>
-<button class="rosa">Painel Principal</button>
-<button class="rosa">Painel Principal</button>
-<button class="rosa">Painel Principal</button>
-<button class="rosa">Painel Principal</button>
+<img src="logo.png" class="logo">
+
+<div class="footer">
+Cartucheira desenvolvida por Moza para uso próprio em produção e operação de áudio.<br><br>
+© 2026 • Todos os direitos reservados.
+</div>
 
 </div>
 
@@ -318,8 +337,6 @@ btn.classList.remove("playing")
 }
 
 }
-
-/* SISTEMA DE ABAS */
 
 function openTab(id,element){
 
