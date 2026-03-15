@@ -1,248 +1,159 @@
-```html
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
 <title>Cartucheira</title>
 
 <style>
 
 body{
-background:#0a0a0a;
-font-family:Arial;
-margin:0;
-color:white;
-}
-
-/* TOPO */
-
-.topo{
-text-align:center;
-font-weight:bold;
-letter-spacing:2px;
-padding:15px;
-font-size:20px;
-}
-
-/* ABAS */
-
-.tabs{
-display:flex;
-}
-
-.tab{
-flex:1;
-padding:15px;
-text-align:center;
-cursor:pointer;
 background:#111;
+font-family:Arial;
 color:white;
-font-weight:bold;
-border:none;
+text-align:center;
 }
 
-.tab.efeitos.active{background:#ff4fa3;}
-.tab.trilhas.active{background:#6fb1ce;color:black;}
-.tab.vinil.active{background:#ff9800;color:black;}
-
-/* TELAS */
-
-.tela{display:none;}
-.tela.active{display:block;}
-
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:20px;
-padding:30px;
+h1{
+margin-top:10px;
 }
 
-/* BOTÕES */
+.abas{
+margin:20px;
+}
 
-button{
-padding:35px;
-font-size:16px;
-border-radius:10px;
+.abas button{
+padding:10px 20px;
+margin:5px;
+background:#333;
+color:white;
 border:none;
 cursor:pointer;
-position:relative;
-overflow:hidden;
+font-size:16px;
 }
 
-.rosa{background:#ff4fa3;color:white;}
-.azulclaro{background:#6fb1ce;color:black;}
-.laranja{background:#ff9800;}
-
-.playing{
-background:#00c853 !important;
-color:white;
-animation:piscar 0.8s infinite;
+.abas button:hover{
+background:#555;
 }
 
-@keyframes piscar{
-0%{opacity:1;}
-50%{opacity:0.4;}
-100%{opacity:1;}
-}
-
-/* BARRA PROGRESSO */
-
-.progress{
-width:0%;
-height:6px;
-background:#ffffff;
-position:absolute;
-bottom:0;
-left:0;
-}
-
-/* VU */
-
-.vumeter{
-padding:10px 30px 30px 30px;
+.aba{
 display:none;
 }
 
-.vu-scale{
-font-size:12px;
-letter-spacing:4px;
-opacity:0.8;
-margin-bottom:6px;
+.aba.ativa{
+display:block;
 }
 
-.vu-track{
-width:100%;
-height:14px;
-background:#111;
-border-radius:6px;
-overflow:hidden;
-margin-bottom:6px;
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+padding:20px;
 }
 
-.vu-led{
-height:100%;
-width:10%;
-background:linear-gradient(
-90deg,
-#00ff00 0%,
-#00ff00 60%,
-#ffff00 80%,
-#ff0000 100%
-);
-animation:vuAnim 0.25s infinite alternate;
-}
-
-@keyframes vuAnim{
-0%{width:8%}
-20%{width:35%}
-40%{width:60%}
-60%{width:45%}
-80%{width:85%}
-100%{width:30%}
-}
-
-/* INICIO */
-
-.inicio{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-height:70vh;
-text-align:center;
-}
-
-.logo{
-max-width:600px;
-width:90%;
-margin-bottom:20px;
-}
-
-.creditos{
+.cartucho{
+padding:20px;
+background:#222;
+border:none;
+color:white;
 font-size:15px;
-opacity:0.85;
-max-width:600px;
-line-height:1.5;
+cursor:pointer;
+}
+
+.cartucho:hover{
+background:#444;
+}
+
+#vu{
+width:300px;
+height:20px;
+background:#333;
+margin:20px auto;
+position:relative;
+}
+
+#vu-bar{
+height:100%;
+width:0%;
+background:lime;
+}
+
+#progress{
+width:300px;
+margin:auto;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="topo">
-CARTUCHEIRA • BY MOZA
+<h1>CARTUCHEIRA</h1>
+
+<div id="vu">
+<div id="vu-bar"></div>
 </div>
 
-<div class="tabs">
+<progress id="progress" value="0" max="100"></progress>
 
-<button class="tab active" onclick="trocarTela('inicio',this)">INÍCIO</button>
-<button class="tab efeitos" onclick="trocarTela('efeitos',this)">EFEITOS</button>
-<button class="tab trilhas" onclick="trocarTela('trilhas',this)">TRILHAS</button>
-<button class="tab vinil" onclick="trocarTela('vinil',this)">DISCO DE VINIL</button>
+<div class="abas">
 
-</div>
+<button onclick="trocarAba('efeitos')">EFEITOS</button>
 
-<!-- INICIO -->
+<button onclick="trocarAba('trilhas')">TRILHAS</button>
 
-<div id="inicio" class="tela active">
-
-<div class="inicio">
-
-<img src="logo.png" class="logo">
-
-<div class="creditos">
-Cartucheira desenvolvida por Moza para uso próprio em produção e operação de áudio.<br>
-© 2026 • Todos os direitos reservados.
-</div>
+<button onclick="trocarAba('vinil')">DISCO DE VINIL</button>
 
 </div>
 
-</div>
+<!-- ABA EFEITOS -->
 
-<!-- EFEITOS -->
-
-<div id="efeitos" class="tela">
+<div id="efeitos" class="aba ativa">
 
 <div class="grid">
 
-<button class="rosa" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+<button class="cartucho" onclick="tocar('audios/risada.mp3')">RISADA</button>
 
-<button class="rosa" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+<button class="cartucho" onclick="tocar('audios/aplausos.mp3')">APLAUSOS</button>
 
-<button class="rosa" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'risada3')">RISADA 3<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'a5')">SOM 5<div class="progress"></div></button>
+<button class="cartucho" onclick="tocar('audios/erro.mp3')">ERRO</button>
 
-<button class="rosa" onclick="play(this,'a6')">SOM 6<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'a7')">SOM 7<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'a8')">SOM 8<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'a9')">SOM 9<div class="progress"></div></button>
-<button class="rosa" onclick="play(this,'a10')">SOM 10<div class="progress"></div></button>
+<button class="cartucho" onclick="tocar('audios/suspense.mp3')">SUSPENSE</button>
 
 </div>
 
-<div class="vumeter">
+</div>
 
-<div class="vu-scale">-30 -20 -10 -5 0 +3</div>
+<!-- ABA TRILHAS -->
 
-<div class="vu-track"><div class="vu-led"></div></div>
-<div class="vu-track"><div class="vu-led"></div></div>
+<div id="trilhas" class="aba">
+
+<div class="grid">
+
+<button class="cartucho" onclick="tocar('audios/trilha1.mp3')">TRILHA 1</button>
+
+<button class="cartucho" onclick="tocar('audios/trilha2.mp3')">TRILHA 2</button>
+
+<button class="cartucho" onclick="tocar('audios/trilha3.mp3')">TRILHA 3</button>
+
+<button class="cartucho" onclick="tocar('audios/trilha4.mp3')">TRILHA 4</button>
+
+</div>
+
+</div>
+
+<!-- ABA VINIL -->
+
+<div id="vinil" class="aba">
+
+<div class="grid">
+
+<button class="cartucho" onclick="tocar('audios/vinil1.mp3')">VINIL 1</button>
+
+<button class="cartucho" onclick="tocar('audios/vinil2.mp3')">VINIL 2</button>
+
+<button class="cartucho" onclick="tocar('audios/vinil3.mp3')">VINIL 3</button>
+
+<button class="cartucho" onclick="tocar('audios/vinil4.mp3')">VINIL 4</button>
 
 </div>
 
@@ -250,107 +161,94 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 
 <script>
 
-function trocarTela(id,el){
+let audio = new Audio()
 
-document.querySelectorAll(".tela").forEach(t=>t.classList.remove("active"))
-document.getElementById(id).classList.add("active")
+let ctx = new (window.AudioContext || window.webkitAudioContext)()
+let analyser = ctx.createAnalyser()
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-el.classList.add("active")
+let source
 
-}
-
-var audios={}
-
-window.onload=function(){
-
-var lista=[
-
-"gloriaaleluia1","gloriaaleluia2","cowboy","heee",
-"gemido","palmas","assovio","buzina","metralhadora",
-"audiobobo","beijo","risada1","risada2","risada3",
-"a5","a6","a7","a8","a9","a10"
-
-]
-
-lista.forEach(function(id){
-audios[id]=new Audio(id+".mp3")
-})
-
-}
-
-function ligarVU(){
-document.querySelectorAll(".vumeter").forEach(v=>v.style.display="block")
-}
-
-function desligarVU(){
-document.querySelectorAll(".vumeter").forEach(v=>v.style.display="none")
-}
-
-function play(btn,id){
-
-var audio=audios[id]
-var progress=btn.querySelector(".progress")
-
-if(!audio)return
-
-/* FADE OUT SE ESTIVER TOCANDO */
-
-if(!audio.paused){
-
-var fade=setInterval(function(){
-
-if(audio.volume>0.05){
-audio.volume-=0.05
-}else{
-
-clearInterval(fade)
+function tocar(src){
 
 audio.pause()
-audio.currentTime=0
-audio.volume=1
 
-btn.classList.remove("playing")
-progress.style.width="0%"
+audio = new Audio(src)
 
-desligarVU()
+source = ctx.createMediaElementSource(audio)
 
-}
+source.connect(analyser)
 
-},50)
-
-return
-}
-
-/* TOCAR */
-
-audio.currentTime=0
-audio.volume=1
-
-btn.classList.add("playing")
+analyser.connect(ctx.destination)
 
 audio.play()
 
-ligarVU()
+monitorVU()
 
-var interval=setInterval(function(){
+monitorProgress()
 
-if(audio.duration){
-var percent=(audio.currentTime/audio.duration)*100
-progress.style.width=percent+"%"
+}
+
+function trocarAba(nome){
+
+document.querySelectorAll('.aba').forEach(a=>a.classList.remove('ativa'))
+
+document.getElementById(nome).classList.add('ativa')
+
+}
+
+function monitorVU(){
+
+let data = new Uint8Array(analyser.frequencyBinCount)
+
+function loop(){
+
+analyser.getByteFrequencyData(data)
+
+let soma = data.reduce((a,b)=>a+b)
+
+let media = soma/data.length
+
+let porcentagem = media/255*100
+
+document.getElementById("vu-bar").style.width = porcentagem+"%"
+
+requestAnimationFrame(loop)
+
+}
+
+loop()
+
+}
+
+function monitorProgress(){
+
+audio.ontimeupdate = function(){
+
+let porcent = (audio.currentTime/audio.duration)*100
+
+document.getElementById("progress").value = porcent
+
+}
+
+}
+
+function fadeOut(){
+
+let fade = setInterval(()=>{
+
+if(audio.volume>0.05){
+
+audio.volume -=0.05
+
+}else{
+
+audio.pause()
+
+clearInterval(fade)
+
 }
 
 },100)
-
-audio.onended=function(){
-
-clearInterval(interval)
-progress.style.width="0%"
-btn.classList.remove("playing")
-
-desligarVU()
-
-}
 
 }
 
@@ -358,4 +256,3 @@ desligarVU()
 
 </body>
 </html>
-```
