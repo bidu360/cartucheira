@@ -39,7 +39,7 @@ overflow:hidden;
 .vu-bar{
 height:100%;
 width:0%;
-background:linear-gradient(to right, #00ff00 0%, #ffff00 70%, #ff0000 100%);
+background:linear-gradient(to right,#00ff00 0%,#ffff00 70%,#ff0000 100%);
 transition:width 0.05s;
 }
 
@@ -150,8 +150,6 @@ line-height:24px;
 <body>
 
 <div class="assinatura">CARTUCHEIRA • BY MOZA</div>
-
-<!-- VU METER -->
 
 <div class="vu-container">
 <div class="vu-bar" id="vu"></div>
@@ -289,6 +287,7 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 
 var audios = {}
 var vu = document.getElementById("vu")
+var vuInterval = null
 
 window.onload = function(){
 
@@ -319,6 +318,9 @@ if(!audio)return
 
 if(!audio.paused){
 
+clearInterval(vuInterval)
+vu.style.width="0%"
+
 var fade = setInterval(function(){
 
 if(audio.volume > 0.05){
@@ -330,7 +332,6 @@ audio.currentTime = 0
 audio.volume = 1
 btn.classList.remove("playing")
 progress.style.width="0%"
-vu.style.width="0%"
 }
 
 },50)
@@ -345,15 +346,21 @@ btn.classList.add("playing")
 
 audio.play()
 
+clearInterval(vuInterval)
+
+vuInterval = setInterval(function(){
+
+var vuLevel = Math.random() * 100
+vu.style.width = vuLevel + "%"
+
+},100)
+
 var interval = setInterval(function(){
 
 if(audio.duration){
 
 var percent = (audio.currentTime / audio.duration) * 100
 progress.style.width = percent + "%"
-
-var vuLevel = Math.random() * 100
-vu.style.width = vuLevel + "%"
 
 }
 
@@ -362,8 +369,10 @@ vu.style.width = vuLevel + "%"
 audio.onended = function(){
 
 clearInterval(interval)
-progress.style.width="0%"
+clearInterval(vuInterval)
+
 vu.style.width="0%"
+progress.style.width="0%"
 btn.classList.remove("playing")
 
 }
