@@ -164,27 +164,24 @@ margin:auto;
 let audio = new Audio()
 
 let ctx = new (window.AudioContext || window.webkitAudioContext)()
-let analyser = ctx.createAnalyser()
 
-let source
+let analyser = ctx.createAnalyser()
+analyser.fftSize = 256
+
+let source = ctx.createMediaElementSource(audio)
+
+source.connect(analyser)
+analyser.connect(ctx.destination)
 
 function tocar(src){
 
 audio.pause()
 
-audio = new Audio(src)
+audio.src = src
 
-source = ctx.createMediaElementSource(audio)
-
-source.connect(analyser)
-
-analyser.connect(ctx.destination)
+audio.currentTime = 0
 
 audio.play()
-
-monitorVU()
-
-monitorProgress()
 
 }
 
@@ -196,11 +193,9 @@ document.getElementById(nome).classList.add('ativa')
 
 }
 
-function monitorVU(){
-
 let data = new Uint8Array(analyser.frequencyBinCount)
 
-function loop(){
+function monitorVU(){
 
 analyser.getByteFrequencyData(data)
 
@@ -212,23 +207,17 @@ let porcentagem = media/255*100
 
 document.getElementById("vu-bar").style.width = porcentagem+"%"
 
-requestAnimationFrame(loop)
+requestAnimationFrame(monitorVU)
 
 }
 
-loop()
-
-}
-
-function monitorProgress(){
+monitorVU()
 
 audio.ontimeupdate = function(){
 
 let porcent = (audio.currentTime/audio.duration)*100
 
 document.getElementById("progress").value = porcent
-
-}
 
 }
 
