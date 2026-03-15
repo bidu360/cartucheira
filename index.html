@@ -15,6 +15,8 @@ margin:0;
 color:white;
 }
 
+/* TITULO */
+
 .assinatura{
 text-align:center;
 letter-spacing:2px;
@@ -23,48 +25,22 @@ font-size:20px;
 font-weight:bold;
 }
 
-/* VU */
+/* VU METER */
 
-.vu-wrapper{
-width:420px;
+.vu-container{
+width:50%;
+height:18px;
 margin:0 auto 10px auto;
-}
-
-.vu-row{
-display:flex;
-align-items:center;
-margin:3px 0;
-}
-
-.vu-label{
-width:20px;
-color:#00ff66;
-font-weight:bold;
-}
-
-.vu-meter{
-display:flex;
-gap:4px;
-flex-grow:1;
-}
-
-.vu-led{
-width:18px;
-height:12px;
 background:#111;
-border-radius:2px;
+border-radius:4px;
+overflow:hidden;
 }
 
-.vu-led.green{background:#00ff00;}
-.vu-led.yellow{background:#ffff00;}
-.vu-led.red{background:#ff0000;}
-
-.vu-scale{
-display:flex;
-justify-content:space-between;
-font-size:10px;
-color:#00ff66;
-margin:2px 20px;
+.vu-bar{
+height:100%;
+width:0%;
+background:linear-gradient(to right,#00ff00 0%,#ffff00 70%,#ff0000 100%);
+transition:width 0.05s;
 }
 
 /* ABAS */
@@ -85,6 +61,8 @@ cursor:pointer;
 color:#00c853;
 }
 
+/* PAGINAS */
+
 .page{
 display:none;
 }
@@ -93,12 +71,16 @@ display:none;
 display:block;
 }
 
+/* GRID */
+
 .grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
 gap:20px;
 padding:30px;
 }
+
+/* BOTÕES */
 
 button{
 padding:35px;
@@ -126,6 +108,8 @@ animation:piscar 0.8s infinite;
 100%{opacity:1;}
 }
 
+/* PROGRESSO */
+
 .progress{
 width:0%;
 height:6px;
@@ -134,6 +118,8 @@ position:absolute;
 bottom:0;
 left:0;
 }
+
+/* HOME */
 
 .home{
 display:flex;
@@ -165,37 +151,20 @@ line-height:24px;
 
 <div class="assinatura">CARTUCHEIRA • BY MOZA</div>
 
-<div class="vu-wrapper">
-
-<div class="vu-row">
-<div class="vu-label">L</div>
-<div class="vu-meter" id="vuL"></div>
-</div>
-
-<div class="vu-scale">
-<span>-20</span>
-<span>-15</span>
-<span>-10</span>
-<span>-6</span>
-<span>-3</span>
-<span>0</span>
-<span>+2</span>
-<span>+4</span>
-</div>
-
-<div class="vu-row">
-<div class="vu-label">R</div>
-<div class="vu-meter" id="vuR"></div>
-</div>
-
+<div class="vu-container">
+<div class="vu-bar" id="vu"></div>
 </div>
 
 <div class="tabs">
+
 <div class="tab active" onclick="openTab('principal',this)">INÍCIO</div>
 <div class="tab" onclick="openTab('efeitos',this)">EFEITOS</div>
 <div class="tab" onclick="openTab('trilhas',this)">TRILHAS</div>
 <div class="tab" onclick="openTab('vinil',this)">DISCO DE VINIL</div>
+
 </div>
+
+<!-- PRINCIPAL -->
 
 <div id="principal" class="page active">
 
@@ -212,81 +181,117 @@ Cartucheira desenvolvida por Moza para uso próprio em produção e operação d
 
 </div>
 
+<!-- EFEITOS -->
+
+<div id="efeitos" class="page">
+
+<div class="grid">
+
+<button class="rosa" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+
+<button class="rosa" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
+<button class="rosa" onclick="play(this,'risada3')">RISADA 3<div class="progress"></div></button>
+
+</div>
+
+</div>
+
+<!-- TRILHAS -->
+
+<div id="trilhas" class="page">
+
+<div class="grid">
+
+<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
+
+<button class="azul">TRILHA 6</button>
+<button class="azul">TRILHA 7</button>
+<button class="azul">TRILHA 8</button>
+<button class="azul">TRILHA 9</button>
+<button class="azul">TRILHA 10</button>
+
+<button class="azul">TRILHA 11</button>
+<button class="azul">TRILHA 12</button>
+<button class="azul">TRILHA 13</button>
+<button class="azul">TRILHA 14</button>
+<button class="azul">TRILHA 15</button>
+
+<button class="azul">TRILHA 16</button>
+<button class="azul">TRILHA 17</button>
+<button class="azul">TRILHA 18</button>
+<button class="azul">TRILHA 19</button>
+<button class="azul">TRILHA 20</button>
+
+</div>
+
+</div>
+
+<!-- VINIL -->
+
+<div id="vinil" class="page">
+
+<div class="grid">
+
+<button class="laranja">VINIL 1</button>
+<button class="laranja">VINIL 2</button>
+<button class="laranja">VINIL 3</button>
+<button class="laranja">VINIL 4</button>
+<button class="laranja">VINIL 5</button>
+
+<button class="laranja">VINIL 6</button>
+<button class="laranja">VINIL 7</button>
+<button class="laranja">VINIL 8</button>
+<button class="laranja">VINIL 9</button>
+<button class="laranja">VINIL 10</button>
+
+<button class="laranja">VINIL 11</button>
+<button class="laranja">VINIL 12</button>
+<button class="laranja">VINIL 13</button>
+<button class="laranja">VINIL 14</button>
+<button class="laranja">VINIL 15</button>
+
+<button class="laranja">VINIL 16</button>
+<button class="laranja">VINIL 17</button>
+<button class="laranja">VINIL 18</button>
+<button class="laranja">VINIL 19</button>
+<button class="laranja">VINIL 20</button>
+
+</div>
+
+</div>
+
 <script>
 
-var audios={}
-var vuInterval=null
+var audios = {}
+var vu = document.getElementById("vu")
+var vuInterval = null
 
-function criarVU(){
+window.onload = function(){
 
-const vuL=document.getElementById("vuL")
-const vuR=document.getElementById("vuR")
-
-for(let i=0;i<20;i++){
-
-let ledL=document.createElement("div")
-let ledR=document.createElement("div")
-
-ledL.className="vu-led"
-ledR.className="vu-led"
-
-vuL.appendChild(ledL)
-vuR.appendChild(ledR)
-
-}
-
-}
-
-function apagarVU(){
-
-document.querySelectorAll(".vu-led").forEach(led=>{
-led.className="vu-led"
-})
-
-}
-
-function atualizarVU(){
-
-let ledsL=document.querySelectorAll("#vuL .vu-led")
-let ledsR=document.querySelectorAll("#vuR .vu-led")
-
-let level=Math.floor(Math.random()*20)
-
-ledsL.forEach((led,i)=>{
-
-led.className="vu-led"
-
-if(i<level){
-
-if(i<12)led.classList.add("green")
-else if(i<16)led.classList.add("yellow")
-else led.classList.add("red")
-
-}
-
-})
-
-ledsR.forEach((led,i)=>{
-
-led.className="vu-led"
-
-if(i<level){
-
-if(i<12)led.classList.add("green")
-else if(i<16)led.classList.add("yellow")
-else led.classList.add("red")
-
-}
-
-})
-
-}
-
-criarVU()
-
-window.onload=function(){
-
-var lista=[
+var lista = [
 
 "gloriaaleluia1","gloriaaleluia2","cowboy","heee","a5",
 "a6","a7","a8","a9","a10",
@@ -298,7 +303,7 @@ var lista=[
 
 lista.forEach(function(id){
 
-audios[id]=new Audio(id+".mp3")
+audios[id] = new Audio(id + ".mp3")
 
 })
 
@@ -306,28 +311,36 @@ audios[id]=new Audio(id+".mp3")
 
 function play(btn,id){
 
-var audio=audios[id]
-var progress=btn.querySelector(".progress")
+var audio = audios[id]
+var progress = btn.querySelector(".progress")
 
 if(!audio)return
 
 if(!audio.paused){
 
 clearInterval(vuInterval)
-vuInterval=null
-apagarVU()
+vu.style.width="0%"
 
+var fade = setInterval(function(){
+
+if(audio.volume > 0.05){
+audio.volume -= 0.05
+}else{
+clearInterval(fade)
 audio.pause()
-audio.currentTime=0
-
+audio.currentTime = 0
+audio.volume = 1
 btn.classList.remove("playing")
 progress.style.width="0%"
+}
+
+},50)
 
 return
 }
 
-audio.currentTime=0
-audio.volume=1
+audio.currentTime = 0
+audio.volume = 1
 
 btn.classList.add("playing")
 
@@ -335,28 +348,30 @@ audio.play()
 
 clearInterval(vuInterval)
 
-vuInterval=setInterval(atualizarVU,80)
+vuInterval = setInterval(function(){
 
-var interval=setInterval(function(){
+var vuLevel = Math.random() * 100
+vu.style.width = vuLevel + "%"
+
+},100)
+
+var interval = setInterval(function(){
 
 if(audio.duration){
 
-var percent=(audio.currentTime/audio.duration)*100
-progress.style.width=percent+"%"
+var percent = (audio.currentTime / audio.duration) * 100
+progress.style.width = percent + "%"
 
 }
 
 },100)
 
-audio.onended=function(){
+audio.onended = function(){
 
 clearInterval(interval)
-
 clearInterval(vuInterval)
-vuInterval=null
 
-apagarVU()
-
+vu.style.width="0%"
 progress.style.width="0%"
 btn.classList.remove("playing")
 
