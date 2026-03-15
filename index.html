@@ -12,16 +12,51 @@ body{
 background:#0a0a0a;
 font-family:Arial;
 margin:0;
+color:white;
 }
 
-.assinatura{
+/* barra superior */
+
+.topo{
 text-align:center;
-color:white;
-font-weight:bold;
-letter-spacing:2px;
 padding:15px;
 font-size:20px;
+font-weight:bold;
+letter-spacing:2px;
 }
+
+/* abas */
+
+.tabs{
+display:flex;
+background:#111;
+}
+
+.tab{
+flex:1;
+padding:15px;
+text-align:center;
+cursor:pointer;
+background:#1a1a1a;
+}
+
+.tab.active{
+background:#ff9800;
+color:black;
+font-weight:bold;
+}
+
+/* telas */
+
+.tela{
+display:none;
+}
+
+.tela.active{
+display:block;
+}
+
+/* grid botões */
 
 .grid{
 display:grid;
@@ -51,8 +86,6 @@ color:white;
 animation:piscar 0.8s infinite;
 }
 
-/* animação do piscar */
-
 @keyframes piscar{
 
 0%{opacity:1;}
@@ -60,8 +93,6 @@ animation:piscar 0.8s infinite;
 100%{opacity:1;}
 
 }
-
-/* barra de progresso */
 
 .progress{
 width:0%;
@@ -73,55 +104,116 @@ left:0;
 border-radius:0 0 10px 10px;
 }
 
+/* tela inicio */
+
+.inicio{
+text-align:center;
+padding:80px;
+font-size:22px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h2 class="assinatura">CARTUCHEIRA • BY MOZA</h2>
+<div class="topo">
+CARTUCHEIRA • BY MOZA
+</div>
+
+<div class="tabs">
+
+<div class="tab active" onclick="trocarTela('inicio',this)">INÍCIO</div>
+<div class="tab" onclick="trocarTela('efeitos',this)">EFEITOS</div>
+<div class="tab" onclick="trocarTela('trilhas',this)">TRILHAS</div>
+<div class="tab" onclick="trocarTela('vinil',this)">DISCO DE VINIL</div>
+
+</div>
+
+<!-- INICIO -->
+
+<div id="inicio" class="tela active">
+
+<div class="inicio">
+
+<h1>CARTUCHEIRA</h1>
+
+<p>Desenvolvido por MOZA</p>
+
+</div>
+
+</div>
+
+<!-- EFEITOS -->
+
+<div id="efeitos" class="tela">
 
 <div class="grid">
 
-<!-- LINHA 1 -->
-<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA 1<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
-<button class="laranja" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'risada1')">RISADA 1<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'risada2')">RISADA 2<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
 
-<!-- LINHA 2 -->
-<button class="cinza" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
+</div>
 
-<!-- LINHA 3 -->
+</div>
+
+<!-- TRILHAS -->
+
+<div id="trilhas" class="tela">
+
+<div class="grid">
+
 <button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
 <button class="azul" onclick="play(this,'trilhasexy')">TRILHA SEXY<div class="progress"></div></button>
 
+</div>
 
-<!-- LINHA 4 -->
-<button class="cinza" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
-<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
+</div>
 
-<!-- LINHA 5 -->
-<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada1')">RISADA1<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada2')">RISADA2<div class="progress"></div></button>
-<button class="amarelo" onclick="play(this,'risada3')">RISADA3<div class="progress"></div></button>
+<!-- VINIL -->
+
+<div id="vinil" class="tela">
+
+<div class="grid">
+
+<button class="laranja" onclick="play(this,'gloriaaleluia1')">GLORIA ALELUIA<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'gloriaaleluia2')">GLORIA ALELUIA 2<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'cowboy')">COWBOY<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'heee')">HEEE<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a5')">SOM 5<div class="progress"></div></button>
+
+</div>
 
 </div>
 
 <script>
+
+/* troca de abas */
+
+function trocarTela(id,el){
+
+document.querySelectorAll(".tela").forEach(t=>{
+t.classList.remove("active")
+})
+
+document.getElementById(id).classList.add("active")
+
+document.querySelectorAll(".tab").forEach(t=>{
+t.classList.remove("active")
+})
+
+el.classList.add("active")
+
+}
+
+/* motor audio (seu código original) */
 
 var audios = {}
 
@@ -129,12 +221,10 @@ window.onload = function(){
 
 var lista = [
 
-"gloriaaleluia1","gloriaaleluia2","cowboy","heee","a5",
-"a6","a7","a8","a9","a10",
+"gloriaaleluia1","gloriaaleluia2","cowboy","heee",
 "trilhacomic","trilhapop1","trilhapop2","trilhapop3","trilhasexy",
-"gemido","palmas","assovio","buzina","metralhadora",
-"audiobobo","beijo",
-"risada1","risada2","risada3"
+"palmas","assovio","buzina",
+"risada1","risada2"
 
 ]
 
