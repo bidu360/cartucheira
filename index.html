@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <title>Cartucheira</title>
 
@@ -54,15 +55,15 @@ color:white;
 .progress{
 width:0%;
 height:6px;
-background:#00e676;
+background:#ffffff;
 position:absolute;
 bottom:0;
 left:0;
 border-radius:0 0 10px 10px;
-transition:width 0.1s linear;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -126,7 +127,9 @@ var lista = [
 ]
 
 lista.forEach(function(id){
+
 audios[id] = new Audio(id + ".mp3")
+
 })
 
 }
@@ -165,6 +168,7 @@ audio.currentTime = 0
 audio.volume = 1
 
 btn.classList.add("playing")
+
 audio.play()
 
 var interval = setInterval(function(){
@@ -190,4 +194,3 @@ btn.classList.remove("playing")
 
 </body>
 </html>
-
