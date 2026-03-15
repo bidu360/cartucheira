@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
-
 <meta charset="UTF-8">
 <title>Cartucheira</title>
 
@@ -37,6 +35,8 @@ font-size:18px;
 border-radius:10px;
 border:none;
 cursor:pointer;
+position:relative;
+overflow:hidden;
 }
 
 .laranja{background:#ff9800;}
@@ -49,8 +49,20 @@ background:#00c853 !important;
 color:white;
 }
 
-</style>
+/* barra de progresso */
 
+.progress{
+width:0%;
+height:6px;
+background:#00e676;
+position:absolute;
+bottom:0;
+left:0;
+border-radius:0 0 10px 10px;
+transition:width 0.1s linear;
+}
+
+</style>
 </head>
 
 <body>
@@ -60,39 +72,39 @@ color:white;
 <div class="grid">
 
 <!-- LINHA 1 -->
-<button class="laranja" onclick="play(this,'a1')">Som 1</button>
-<button class="laranja" onclick="play(this,'a2')">Som 2</button>
-<button class="laranja" onclick="play(this,'a3')">Som 3</button>
-<button class="laranja" onclick="play(this,'a4')">Som 4</button>
-<button class="laranja" onclick="play(this,'a5')">Som 5</button>
+<button class="laranja" onclick="play(this,'a1')">Som 1<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a2')">Som 2<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a3')">Som 3<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a4')">Som 4<div class="progress"></div></button>
+<button class="laranja" onclick="play(this,'a5')">Som 5<div class="progress"></div></button>
 
 <!-- LINHA 2 -->
-<button class="cinza" onclick="play(this,'a6')">Som 6</button>
-<button class="cinza" onclick="play(this,'a7')">Som 7</button>
-<button class="cinza" onclick="play(this,'a8')">Som 8</button>
-<button class="cinza" onclick="play(this,'a9')">Som 9</button>
-<button class="cinza" onclick="play(this,'a10')">Som 10</button>
+<button class="cinza" onclick="play(this,'a6')">Som 6<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a7')">Som 7<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a8')">Som 8<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a9')">Som 9<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'a10')">Som 10<div class="progress"></div></button>
 
 <!-- LINHA 3 -->
-<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC</button>
-<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1</button>
-<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2</button>
-<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3</button>
-<button class="azul" onclick="play(this,'a15')">Som 15</button>
+<button class="azul" onclick="play(this,'trilhacomic')">TRILHA COMIC<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop1')">TRILHA POP 1<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop2')">TRILHA POP 2<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'trilhapop3')">TRILHA POP 3<div class="progress"></div></button>
+<button class="azul" onclick="play(this,'a15')">Som 15<div class="progress"></div></button>
 
 <!-- LINHA 4 -->
-<button class="cinza" onclick="play(this,'gemido')">GEMIDO</button>
-<button class="cinza" onclick="play(this,'palmas')">PALMAS</button>
-<button class="cinza" onclick="play(this,'assovio')">ASSOVIO</button>
-<button class="cinza" onclick="play(this,'buzina')">BUZINA</button>
-<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA</button>
+<button class="cinza" onclick="play(this,'gemido')">GEMIDO<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'palmas')">PALMAS<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'assovio')">ASSOVIO<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'buzina')">BUZINA<div class="progress"></div></button>
+<button class="cinza" onclick="play(this,'metralhadora')">METRALHADORA<div class="progress"></div></button>
 
 <!-- LINHA 5 -->
-<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO</button>
-<button class="amarelo" onclick="play(this,'beijo')">BEIJO</button>
-<button class="amarelo" onclick="play(this,'risada1')">RISADA1</button>
-<button class="amarelo" onclick="play(this,'risada2')">RISADA2</button>
-<button class="amarelo" onclick="play(this,'risada3')">RISADA3</button>
+<button class="amarelo" onclick="play(this,'audiobobo')">AUDIOBOBO<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'beijo')">BEIJO<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada1')">RISADA1<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada2')">RISADA2<div class="progress"></div></button>
+<button class="amarelo" onclick="play(this,'risada3')">RISADA3<div class="progress"></div></button>
 
 </div>
 
@@ -114,9 +126,7 @@ var lista = [
 ]
 
 lista.forEach(function(id){
-
 audios[id] = new Audio(id + ".mp3")
-
 })
 
 }
@@ -124,6 +134,7 @@ audios[id] = new Audio(id + ".mp3")
 function play(btn,id){
 
 var audio = audios[id]
+var progress = btn.querySelector(".progress")
 
 if(!audio){
 console.log("Áudio não encontrado:",id)
@@ -142,6 +153,7 @@ audio.pause()
 audio.currentTime = 0
 audio.volume = 1
 btn.classList.remove("playing")
+progress.style.width="0%"
 }
 
 },50)
@@ -153,11 +165,23 @@ audio.currentTime = 0
 audio.volume = 1
 
 btn.classList.add("playing")
-
 audio.play()
 
+var interval = setInterval(function(){
+
+if(audio.duration){
+var percent = (audio.currentTime / audio.duration) * 100
+progress.style.width = percent + "%"
+}
+
+},100)
+
 audio.onended = function(){
+
+clearInterval(interval)
+progress.style.width="0%"
 btn.classList.remove("playing")
+
 }
 
 }
@@ -166,3 +190,4 @@ btn.classList.remove("playing")
 
 </body>
 </html>
+
