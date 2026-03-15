@@ -130,6 +130,15 @@ console.log("Áudio não encontrado:",id)
 return
 }
 
+if(!audio.paused){
+
+audio.pause()
+audio.currentTime = 0
+btn.classList.remove("playing")
+return
+
+}
+
 audio.currentTime = 0
 
 btn.classList.add("playing")
